@@ -271,6 +271,8 @@ nailType.addEventListener("change", function () {
     calculateTotal();
 });
 
+const serviceCategoryError = document.querySelector("#service-category-error");
+
 bookingForm.addEventListener("submit", function (event) {
     const serviceSelected = Array.from(serviceCategories).some(function (category) {
         return category.checked;
@@ -278,7 +280,10 @@ bookingForm.addEventListener("submit", function (event) {
 
     if (!serviceSelected) {
         event.preventDefault();
-        alert("Please select at least one service category.");
+        serviceCategoryError.hidden = false;
+        serviceCategoryError.focus();
+    } else {
+        serviceCategoryError.hidden = true;
     }
 });
 
