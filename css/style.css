@@ -310,7 +310,7 @@ header nav .book-button {
     white-space: nowrap;
 }
 
-.service-grid {
+.services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
@@ -1120,14 +1120,18 @@ footer p a:hover {
     display: none;
 }
 
-.services-grid {
+.service-grid {
     grid-template-columns: 1fr;
 }
 
-    header nav {
+header nav {
     position: relative;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .menu-toggle {
@@ -1170,10 +1174,21 @@ header nav ul.show-menu {
         font-size: 28px;
     }
 
-    #home > p:first-of-type {
-        font-size: 14px;
-        letter-spacing: 2px;
-    }
+    .hero-content {
+    width: 100%;
+    max-width: 100%;
+}
+
+.hero-location {
+    width: 100%;
+    max-width: 100%;
+}
+
+    .hero-tagline {
+    font-size: 12px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
 
     .hero-buttons {
         flex-direction: column;
@@ -1272,6 +1287,17 @@ header nav ul.show-menu {
 .thank-you-buttons a {
     width: 100%;
     text-align: center;
+}
+
+.feature-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 25px 5%;
+}
+
+.feature-item {
+    justify-content: center;
 }
 
 }
