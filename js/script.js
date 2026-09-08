@@ -10,7 +10,7 @@ menuToggle.addEventListener("click", function () {
 });
 
 const serviceCategories = document.querySelectorAll(
-    'input[name="service-category"]'
+    'input[name="Service Category"]'
 );
 
 const specificServices = document.querySelector("#specific-services");
@@ -119,6 +119,10 @@ currentDropdowns.forEach(function (select) {
 
                 const select = document.createElement("select");
 
+                const selectId = `${selectedCategory}-service`;
+select.id = selectId;
+label.htmlFor = selectId;
+
                 if (selectedCategory === "nails") {
     select.name = "Nail Service";
 } else if (selectedCategory === "pedicure") {
@@ -164,7 +168,7 @@ select.required = true;
         });
 
         const nailsCheckbox = document.querySelector(
-            'input[name="service-category"][value="nails"]'
+            'input[name="Service Category"][value="nails"]'
         );
 
         if (nailsCheckbox.checked) {
@@ -212,7 +216,7 @@ function calculateTotal() {
     });
 
     const nailsCheckbox = document.querySelector(
-    'input[name="service-category"][value="nails"]'
+    'input[name="Service Category"][value="nails"]'
 );
 
 if (nailsCheckbox.checked) {
