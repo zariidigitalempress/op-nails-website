@@ -408,30 +408,27 @@
                 <p>Choose your service and appointment preferences below.</p>
 <form
     id="booking-form"
-    action="https://formsubmit.co/opnailslr@gmail.com"
+    action="https://script.google.com/macros/s/AKfycbxee1f2gDPeLIbuKA1-EtaQ0R6MeSsBExArh3Ze8djThx7qh3w8JaLUJbjQ6nuvHvoEiw/exec"
     method="POST"
-    enctype="multipart/form-data"
 >
+    <input type="hidden" id="services-data" name="services">
+    <input type="hidden" id="nail-addons-data" name="nailAddons">
+    <input type="hidden" id="photo-base64" name="photoBase64">
+    <input type="hidden" id="photo-name" name="photoName">
+    <input type="hidden" id="photo-type" name="photoType">
 
-    <input
-    type="hidden"
-    name="_subject"
-    value="New O.P. Nails Booking Request"
->
+    <input type="hidden" id="customer-name-data" name="customerName">
+    <input type="hidden" id="phone-data" name="phone">
+    <input type="hidden" id="email-data" name="email">
 
-<input
-    type="hidden"
-    name="_template"
-    value="table"
->
+    <input type="hidden" id="nail-type-data" name="nailType">
+    <input type="hidden" id="nail-length-data" name="nailLength">
+    <input type="hidden" id="nail-shape-data" name="nailShape">
 
-<input type="hidden" name="_captcha" value="false">
-
-<input
-    type="hidden"
-    name="_next"
-    value="https://zariidigitalempress.github.io/op-nails-website/thank-you.html"
->
+    <input type="hidden" id="date-data" name="date">
+    <input type="hidden" id="time-data" name="time">
+    <input type="hidden" id="details-data" name="details">
+    <input type="hidden" id="estimated-total-data" name="estimatedTotal">
 
                     <label for="full-name">Full Name</label>
                     <input type="text" id="full-name" name="Customer Name" required>

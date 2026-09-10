@@ -26,7 +26,7 @@ const nailLength = document.querySelector("#nail-length");
 const nailShape = document.querySelector("#nail-shape");
 const inspirationPhoto = document.querySelector("#inspiration-photo");
 const nailAddons = document.querySelectorAll(
-    'input[name="nail-addons"]'
+    'input[name="Nail Add-Ons"]'
 );
 
 const careerForm = document.querySelector("#career-form");
@@ -277,19 +277,181 @@ nailType.addEventListener("change", function () {
 
 const serviceCategoryError = document.querySelector("#service-category-error");
 
-bookingForm.addEventListener("submit", function (event) {
-    const serviceSelected = Array.from(serviceCategories).some(function (category) {
-        return category.checked;
-    });
+bookingForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-    if (!serviceSelected) {
-        event.preventDefault();
+    const selectedCategories =
+        Array.from(serviceCategories).filter(function (category) {
+            return category.checked;
+        });
+
+    if (selectedCategories.length === 0) {
         serviceCategoryError.hidden = false;
         serviceCategoryError.focus();
-    } else {
-        serviceCategoryError.hidden = true;
+        return;
+    }
+
+    serviceCategoryError.hidden = true;
+
+    const selectedServices = [];
+
+    selectedCategories.forEach(function (category) {
+        const select =
+            document.querySelector(
+                `#${category.value}-service`
+            );
+
+        if (select && select.value) {
+            selectedServices.push({
+                category: category.value,
+                service: select.value
+            });
+        }
+    });
+
+    if (
+        selectedServices.length !==
+        selectedCategories.length
+    ) {
+        alert(
+            "Please choose a specific service for every selected category."
+        );
+        return;
+    }
+
+    const selectedAddons =
+        Array.from(nailAddons)
+            .filter(function (addon) {
+                return addon.checked;
+            })
+            .map(function (addon) {
+                return addon.value;
+            });
+
+    document.querySelector("#services-data").value =
+        JSON.stringify(selectedServices);
+
+    document.querySelector("#nail-addons-data").value =
+        JSON.stringify(selectedAddons);
+
+    document.querySelector("#customer-name-data").value =
+        document.querySelector("#full-name").value;
+
+    document.querySelector("#phone-data").value =
+        document.querySelector("#phone").value;
+
+    document.querySelector("#email-data").value =
+        document.querySelector("#email").value;
+
+    document.querySelector("#nail-type-data").value =
+        nailType.value;
+
+    document.querySelector("#nail-length-data").value =
+        nailLength.value;
+
+    document.querySelector("#nail-shape-data").value =
+        nailShape.value;
+
+    document.querySelector("#date-data").value =
+        appointmentDate.value;
+
+    document.querySelector("#time-data").value =
+        appointmentTime.value;
+
+    document.querySelector("#details-data").value =
+        document.querySelector("#appointment-notes").value;
+
+    document.querySelector("#estimated-total-data").value =
+        estimatedTotalInput.value;
+
+    const submitButton =
+        bookingForm.querySelector(".booking-submit");
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    try {
+        const photo = inspirationPhoto.files[0];
+
+        if (photo) {
+            const allowedTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+            if (!allowedTypes.includes(photo.type)) {
+                alert(
+                    "Please upload a JPG, PNG, or WebP image."
+                );
+
+                submitButton.disabled = false;
+                submitButton.textContent =
+                    "Submit Booking Request";
+
+                return;
+            }
+
+            if (photo.size > 5 * 1024 * 1024) {
+                alert(
+                    "Please upload an inspiration photo that is 5 MB or smaller."
+                );
+
+                submitButton.disabled = false;
+                submitButton.textContent =
+                    "Submit Booking Request";
+
+                return;
+            }
+
+            const photoData =
+                await fileToBase64(photo);
+
+            document.querySelector("#photo-base64").value =
+                photoData;
+
+            document.querySelector("#photo-name").value =
+                photo.name;
+
+            document.querySelector("#photo-type").value =
+                photo.type;
+        }
+
+        bookingForm.submit();
+
+    } catch (error) {
+        console.error(error);
+
+        alert(
+            "We couldn't submit your booking. Please try again."
+        );
+
+        submitButton.disabled = false;
+        submitButton.textContent =
+            "Submit Booking Request";
     }
 });
+
+
+function fileToBase64(file) {
+    return new Promise(function (resolve, reject) {
+        const reader = new FileReader();
+
+        reader.onload = function () {
+            resolve(reader.result);
+        };
+
+        reader.onerror = function () {
+            reject(
+                new Error(
+                    "The inspiration photo could not be read."
+                )
+            );
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
 
 careerForm.addEventListener("submit", function (event) {
     if (licensed.value === "no") {
@@ -362,8 +524,10 @@ appointmentDate.addEventListener("change", function () {
 
         const displayTime = `${hour12}:${minutes} ${period}`;
 
-        option.value = displayTime;
-        option.textContent = displayTime;
+        option.value =
+    `${String(currentHour).padStart(2, "0")}:${minutes}`;
+
+option.textContent = displayTime;
 
         appointmentTime.appendChild(option);
 
