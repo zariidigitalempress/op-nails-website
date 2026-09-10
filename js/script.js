@@ -417,8 +417,21 @@ bookingForm.addEventListener("submit", async function (event) {
                 photo.type;
         }
 
-        bookingForm.submit();
+const formData =
+    new FormData(bookingForm);
 
+await fetch(
+    bookingForm.action,
+    {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+    }
+);
+
+window.location.href =
+    "thank-you.html";
+    
     } catch (error) {
         console.error(error);
 
