@@ -1120,7 +1120,7 @@ footer p a:hover {
     display: none;
 }
 
-.service-grid {
+.services-grid {
     grid-template-columns: 1fr;
 }
 
