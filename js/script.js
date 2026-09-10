@@ -39,6 +39,8 @@ const estimatedTotalInput =
 
 const services = {
     nails: [
+    { name: "KIDS Manicure AGES 8 UNDER", price: 15, displayPrice: "$15" },
+    { name: "KIDS Manicure AGES 9 - 12", price: 20, displayPrice: "$20" },    
     { name: "Manicure", price: 25, displayPrice: "$25" },
     { name: "Regular Acrylic Full Set", price: 40, displayPrice: "$40" },
     { name: "Acrylic Fill", price: 30, displayPrice: "$30" },
@@ -55,6 +57,10 @@ const services = {
 ],
 
     pedicure: [
+    { name: "KIDS Pedicure Regular AGES 8 UNDER", price: 25, displayPrice: "$25" },
+    { name: "KIDS Pedicure Regular AGES 9 - 12", price: 30, displayPrice: "$30" },
+    { name: "KIDS Pedicure Gel AGES 8 UNDER", price: 40, displayPrice: "$40" },
+    { name: "KIDS Pedicure Gel AGES 9 - 12", price: 45, displayPrice: "$45" },    
     { name: "Classic Pedicure", price: 40, displayPrice: "$40" },
     { name: "Deluxe Pedicure", price: 50, displayPrice: "$50" },
     { name: "Premium Pedicure", price: 60, displayPrice: "$60" },
@@ -352,6 +358,9 @@ bookingForm.addEventListener("submit", async function (event) {
     document.querySelector("#nail-shape-data").value =
         nailShape.value;
 
+    document.getElementById("nail-tech-data").value =
+    document.getElementById("nail-tech").value;
+
     document.querySelector("#date-data").value =
         appointmentDate.value;
 
@@ -401,7 +410,7 @@ bookingForm.addEventListener("submit", async function (event) {
                 submitButton.textContent =
                     "Submit Booking Request";
 
-                return;
+                return;xx
             }
 
             const photoData =

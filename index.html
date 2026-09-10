@@ -121,6 +121,17 @@
 
                 <div class="service-card">
                     <h3>Nails</h3>
+
+<div class="service-row">
+    <span>KIDS Manicure AGES 8 UNDER</span>
+    <span>$15</span>
+</div>
+
+<div class="service-row">
+    <span>KIDS Manicure AGES 9 - 12</span>
+    <span>$20</span>
+</div>
+
 <div class="service-row">
     <span>Manicure</span>
     <span>$25</span>
@@ -224,6 +235,26 @@
                 <div class="service-card">
                     <h3>Pedicures</h3>
                     <div class="service-row">
+    <div class="service-row">
+    <span>KIDS Pedicure Regular AGES 8 UNDER</span>
+    <span>$25</span>
+</div>
+
+<div class="service-row">
+    <span>KIDS Pedicure Regular AGES 9 - 12</span>
+    <span>$30</span>
+</div>
+
+<div class="service-row">
+    <span>KIDS Pedicure Gel AGES 8 UNDER</span>
+    <span>$40</span>
+</div>
+
+<div class="service-row">
+    <span>KIDS Pedicure Gel AGES 9 - 12</span>
+    <span>$45</span>
+</div>
+
     <span>Classic Pedicure</span>
     <span>$40</span>
 </div>
@@ -424,6 +455,12 @@
     <input type="hidden" id="nail-type-data" name="nailType">
     <input type="hidden" id="nail-length-data" name="nailLength">
     <input type="hidden" id="nail-shape-data" name="nailShape">
+
+    <input
+    type="hidden"
+    id="nail-tech-data"
+    name="nailTech"
+>
 
     <input type="hidden" id="date-data" name="date">
     <input type="hidden" id="time-data" name="time">
@@ -677,6 +714,30 @@
         <h3>Appointment Details</h3>
         <p>Choose your preferred date and time for your visit.</p>
     </div>
+
+    <!-- Service Category -->
+...your service category checkboxes...
+
+<!-- Specific Services -->
+<div id="specific-services">
+    ...
+</div>
+
+<!-- ADD NAIL TECH RIGHT HERE -->
+<div class="form-group">
+    <label for="nail-tech">Choose Your Nail Tech *</label>
+
+    <select id="nail-tech" name="Nail Tech" required>
+        <option value="">Select a nail tech</option>
+        <option value="Nicole">Nicole</option>
+        <option value="Mark">Mark</option>
+        <option value="Hue">Hue</option>
+        <option value="Quan">Quan</option>
+        <option value="No Preference">No Preference / First Available</option>
+    </select>
+</div>
+
+<!-- then your nail options / appointment date & time -->
 
     <div class="appointment-date-time">
 
