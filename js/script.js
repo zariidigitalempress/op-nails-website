@@ -40,8 +40,10 @@ const estimatedTotalInput =
 const services = {
     nails: [
     { name: "Kids Manicure (Ages 8 & Under)", price: 15, displayPrice: "$15" },
-{ name: "Kids Manicure (Ages 9–12)", price: 20, displayPrice: "$20" },    
+    { name: "Kids Manicure (Ages 9–12)", price: 20, displayPrice: "$20" },    
     { name: "Manicure", price: 25, displayPrice: "$25" },
+    { name: "Russian Manicure", price: 35, displayPrice: "$35" },
+    { name: "Deluxe Manicure", price: 35, displayPrice: "$35" },
     { name: "Regular Acrylic Full Set", price: 40, displayPrice: "$40" },
     { name: "Acrylic Fill", price: 30, displayPrice: "$30" },
     { name: "Pink & White Full Set", price: 65, displayPrice: "$65" },
